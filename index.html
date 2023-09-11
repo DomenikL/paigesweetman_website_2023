@@ -3,28 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/design.css">
+    <link rel="stylesheet" href="style/styles.css">
 </head>
 
-<header>
-    <h1 class ="logo">Logo</h1>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <nav>
-        <ul>
-            <ul><a href="#">Home</a></ul>
-            <li><a href="#">Art Collection</a></li>
-            <li><a href="#">About Methods</a></li>
-        </ul>
-    </nav>
-    <label for="nav-toggle" class="nav-toggle-label">
-        <span></span>
-    </label>
-</header>
-
 <body>
-    <h1>hello world</h1>
-</body>
+    <header>
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="artcollection.html">Art Collection</a></li>
+                <li><a href="aboutme.html">About Me</a></li>
+            </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+    </header>
 
-<footer>
-    <p>&copy;</p>
-</footer>
+<div class="main"> 
+    <div class="container">
+        <h2>Featured Artworks</h2>
+        <div class="gallery">
+            <table>
+                <tr>
+                    <td>
+                        <div class="art-piece">
+                            <img src="images/alternatefinalfrontcover.png" alt="Alternate Cover">
+                            <h3>Artwork Title</h3>
+                            <p>description:</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="art-piece">
+                            <img src="images/finalfrontcover.png" alt="Final Cover">
+                            <h3>Artwork Title</h3>
+                            <p>description:</p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        <!-- Add more art pieces here -->
+        </div>
+    </div>
+</div>
+</body>
