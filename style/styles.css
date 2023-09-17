@@ -41,7 +41,7 @@ h1 {
 }
 
 .main {
-  padding-top: 44px;
+  padding-top: 40px;
 }
 
 .content {
@@ -303,7 +303,7 @@ footer {
   margin-left: 20px;
 }
 
-#index_welcome_text h3 {
+#index_welcome_text h {
   margin-left: 20px;
 }
 
@@ -311,6 +311,98 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#aboutme {
+  background-color: #383838;
+  color: #ECECE8;
+}
+
+#index_aboutme .width_container {
+  display: flex;
+  flex-direction: column;
+}
+
+#aboutme h2 {
+  color: #ECECE8;
+  margin-left: 20px;
+}
+
+#aboutme p {
+  color: #ECECE8; 
+}
+
+#aboutme_text {
+  width: 70%;
+  padding: 20px;
+}
+
+#aboutme_logo {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#aboutme .logo {
+  width: 70%;
+  height: auto;
+}
+
+#designs_top {
+  background-color: #383838;
+}
+
+#designs_top .width_container {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+#designs_text {
+  width: 50%;
+  padding: 20px;
+}
+
+#designs_text h2 {
+  margin-left: 20px;
+  color: #ECECE8;
+}
+
+#designs_text p {
+  color: #ECECE8;
+}
+
+#designs_favourites {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#designs_favourites img {
+  width: 50%;
+  height: auto;  
+}
+
+#designs_main_page .width_container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.artcollection_image_container {
+  padding: 20px;
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.artcollection_image_container img {
+  width: 80%;
+  height: auto;
 }
 
 @media screen and (max-width: 600px) {
@@ -335,10 +427,6 @@ footer {
     margin: 20px;  
   }
 
-  #index_aboutme .width_container {
-    display: flex;
-    flex-direction: column;
-  }
   #index_aboutme_text {
     width: 100%;
   }
@@ -347,6 +435,29 @@ footer {
     margin: auto;
   }
 
+  #aboutme .width_container {
+    display: flex;
+    flex-direction: column;
+  }
+  #aboutme_text {
+    width: 100%;
+  }
+  #aboutme_logo {
+    width: 50%;
+    margin: auto;
+  }
+  .artcollection_image_container {
+    width: 100%;
+  }
+
+  #designs_top .width_container {
+    flex-direction: column;
+  }
+  
+  #designs_favourites {
+    width: 100%;
+    padding: 20px;
+  }
 }
 
 .container {
