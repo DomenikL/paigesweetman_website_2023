@@ -320,7 +320,7 @@ footer {
 
 #index_aboutme .width_container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 #aboutme h2 {
@@ -427,6 +427,10 @@ footer {
     margin: 20px;  
   }
 
+  #index_aboutme .width_container {
+    flex-direction: column;
+  }
+
   #index_aboutme_text {
     width: 100%;
   }
@@ -436,7 +440,6 @@ footer {
   }
 
   #aboutme .width_container {
-    display: flex;
     flex-direction: column;
   }
   #aboutme_text {
