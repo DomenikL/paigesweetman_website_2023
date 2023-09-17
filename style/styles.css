@@ -210,10 +210,16 @@ nav a:hover{
   width: auto;
 }
 
-footer {
-  align-items: center;
-  position:relative;
+#footer {
+  background-color: #121113;
+}
 
+#footer p {
+  color:#ECECE8;
+}
+
+#footer .width_container {
+  padding: 0 20px;
 }
 
 #index_background {
