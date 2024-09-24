@@ -17,6 +17,11 @@ app.get('/api/artpieces', async (req, res) => {
     res.json(response)
 })
 
+app.get('/api/artpiece', async (req, res) => {
+    const response = {id: 10, description: "Alternate Cover", filename: "piece1.png"}
+    res.json(response)  
+})
+
 const server = app.listen(8080, () => {
     console.log('Server is running on port 8080')   
 })

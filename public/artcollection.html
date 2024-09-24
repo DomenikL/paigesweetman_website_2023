@@ -50,11 +50,10 @@
         fetch('api/artpieces', {method: 'GET' })
         .then(response => response.json())
         .then(data => {
-            console.log("data", data)
             data.forEach(artpice => { 
                 const artpiece = document.createElement('div')
                 artpiece.classList.add('artcollection_image_container')
-                artpiece.innerHTML = `<img src="images/${artpice.filename}" alt="${artpiece.description}" onclick="location.href='art.html?id=${artpice.id}'">`
+                artpiece.innerHTML = `<a href="art.html?id=${artpice.id}"><img src="images/${artpice.filename}" alt="${artpiece.description}"></a>`
                 artcontainer.appendChild(artpiece)
             });
         })
