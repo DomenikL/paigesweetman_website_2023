@@ -1,65 +1,75 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style/styles.css">
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/styles.css" />
+  </head>
 
-    <body>
-        <header class="container">
-            <img src="images/logo.png" alt="Logo" class="logo">
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
-            <nav class="width_container">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="artcollection.html">Art Collection</a></li>
-                    <li><a href="aboutme.html">About Me</a></li>
-                </ul>
-            </nav>
-            <label for="nav-toggle" class="nav-toggle-label">
-                <span></span>
-            </label>
-        </header>
+  <body>
+    <header class="container">
+      <img src="images/logo.png" alt="Logo" class="logo" />
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <nav class="width_container">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="artcollection.html">Art Collection</a></li>
+          <li><a href="aboutme.html">About Me</a></li>
+        </ul>
+      </nav>
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+      </label>
+    </header>
 
-        <div class="main"> 
-            <div class="container" id="designs_top">
-                <div class="width_container">
-                    <div id="designs_text">
-                        <h2>Art Collection</h2>
-                        <p>As part of my school design project in which I tasked myself to design the world and characters for the fictional game 'Spectre Protocol' I also designed some game covers to go with them. These covers went through several iterations until I finally landed on my final design (voted on by my peers) which I then polished further and finished. </p>
-                    </div>
-                    <div id="designs_favourites">
-                        <img src="images/alternatefinalfrontcover.png" alt="Alternate Cover" onclick="location.href='art.html?image=images/alternatefinalfrontcover.png'">
-                    </div>
-                </div>
-            </div>
-            <div class="container" id="designs_main_page">
-                <div class="width_container" id="artcontainer">
-                </div>
-            </div>
+    <div class="main">
+      <div class="container" id="designs_top">
+        <div class="width_container">
+          <div id="designs_text">
+            <h2>Art Collection</h2>
+            <p>
+              As part of my school design project in which I tasked myself to
+              design the world and characters for the fictional game 'Spectre
+              Protocol' I also designed some game covers to go with them. These
+              covers went through several iterations until I finally landed on
+              my final design (voted on by my peers) which I then polished
+              further and finished.
+            </p>
+          </div>
+          <div id="designs_favourites">
+            <img
+              src="images/alternatefinalfrontcover.png"
+              alt="Alternate Cover"
+              onclick="location.href='art.html?image=images/alternatefinalfrontcover.png'"
+            />
+          </div>
         </div>
-        <div class="container" id="footer">
-            <div class="width_container">
-                <p>Copyright &copy; 2023-2024 Page Sweetman. All rights reserved.</p>
-            </div>
-        </div>
-    </body>
-    <script>
-        const artcontainer=document.getElementById('artcontainer')
-        fetch('api/artpieces', {method: 'GET' })
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(artpice => { 
-                const artpiece = document.createElement('div')
-                artpiece.classList.add('artcollection_image_container')
-                artpiece.innerHTML = `<a href="art.html?id=${artpice.id}"><img src="images/${artpice.filename}" alt="${artpiece.description}"></a>`
-                artcontainer.appendChild(artpiece)
-            });
-        })
-        .catch(errorMsg => {
-            console.log(errorMsg)
-            alert("Faild to fetch art")
-        })
-    </script>
+      </div>
+      <div class="container" id="designs_main_page">
+        <div class="width_container" id="artcontainer"></div>
+      </div>
+    </div>
+    <div class="container" id="footer">
+      <div class="width_container">
+        <p>Copyright &copy; 2023-2024 Page Sweetman. All rights reserved.</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    const artcontainer = document.getElementById("artcontainer");
+    fetch("api/artpieces", { method: "GET" })
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((artpice) => {
+          const artpiece = document.createElement("div");
+          artpiece.classList.add("artcollection_image_container");
+          artpiece.innerHTML = `<a href="art.html?id=${artpice.id}"><img src="images/${artpice.filename}" alt="${artpiece.description}"></a>`;
+          artcontainer.appendChild(artpiece);
+        });
+      })
+      .catch((errorMsg) => {
+        console.log(errorMsg);
+        alert("Faild to fetch art");
+      });
+  </script>
 </html>

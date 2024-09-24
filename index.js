@@ -1,27 +1,39 @@
-const express = require('express')
-const app = express()
+const express = require("express");
+const app = express();
 
-app.use(express.static('public'))
+const db = require("./db").createPool();
 
-app.get('/api/artpieces', async (req, res) => {
-    const response = [
-        { id: 10, description: "Alternate Cover", filename: "piece1.png" },
-        { id: 20, description: "Final Cover", filename: "piece2.png"},
-        { id: 30, description: "Alternate Cover", filename: "piece3.png" },
-        { id: 40, description: "Final Cover", filename: "piece4.png"},
-        { id: 50, description: "Alternate Cover", filename: "piece5.png" },
-        { id: 60, description: "Final Cover", filename: "piece6.png"},
-        { id: 70, description: "Alternate Cover", filename: "piece7.png" },
-        { id: 80, description: "Final Cover", filename: "piece8.png"},
-    ]
-    res.json(response)
-})
+app.use(express.static("public"));
 
-app.get('/api/artpiece', async (req, res) => {
-    const response = {id: 10, description: "Alternate Cover", filename: "piece1.png"}
-    res.json(response)  
-})
+app.get("/api/artpieces", async (req, res) => {
+  const response = await db.query(
+    "select id, description, filename from artpieces"
+  );
+  res.json(response);
+});
+
+app.get("/api/artpiece", async (req, res) => {
+  const idParam = req.query.id;
+  if (idParam) {
+    if (idParam.match(/^[0-9]+$/)) {
+      const result = await db.query(
+        "select id, description, filename from artpieces where id = ?",
+        [idParam]
+      );
+      if (result.length > 0) {
+        res.json(result[0]);
+        return;
+      } else {
+        res.status(404).json({ message: "Art piece not found" });
+      }
+    } else {
+      res.status(400).json({ error: "ID parameter must be numeric" });
+    }
+  } else {
+    res.status(400).json({ error: "Missing id parameter" });
+  }
+});
 
 const server = app.listen(8080, () => {
-    console.log('Server is running on port 8080')   
-})
+  console.log("Server is running on port 8080");
+});
