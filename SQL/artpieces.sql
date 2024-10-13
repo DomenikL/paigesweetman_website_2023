@@ -12,5 +12,5 @@ INSERT INTO `artpieces` (`description`, `filename`) VALUES ('Fisherman''s Dagger
 INSERT INTO `artpieces` (`description`, `filename`) VALUES ('Fisherman''s Dagger 5', 'piece5.png');
 INSERT INTO `artpieces` (`description`, `filename`) VALUES ('Fisherman''s Dagger 6', 'piece6.png');
 INSERT INTO `artpieces` (`description`, `filename`) VALUES ('Fumeigator Concept', 'piece7.png');
-INSERT INTO `artpieces` (`description`, `filename`) VALUES ('Vax''s Scythe Concept', 'piece8.png');
+INSERT INTO `artpieces` (`description`, `filename`) VALUES ('Vax''s Scythe Concept', 'piece8.png'); 
 

@@ -60,11 +60,11 @@
     fetch("api/artpieces", { method: "GET" })
       .then((response) => response.json())
       .then((data) => {
-        data.forEach((artpice) => {
-          const artpiece = document.createElement("div");
-          artpiece.classList.add("artcollection_image_container");
-          artpiece.innerHTML = `<a href="art.html?id=${artpice.id}"><img src="images/${artpice.filename}" alt="${artpiece.description}"></a>`;
-          artcontainer.appendChild(artpiece);
+        data.forEach((artpiece) => {
+          const artpieceDiv = document.createElement("div");
+          artpieceDiv.classList.add("artcollection_image_container");
+          artpieceDiv.innerHTML = `<a href="art.html?id=${artpiece.id}"><img src="images/${artpiece.filename}" alt="${artpiece.description}"></a>`;
+          artcontainer.appendChild(artpieceDiv);
         });
       })
       .catch((errorMsg) => {
