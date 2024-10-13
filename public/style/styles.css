@@ -398,6 +398,17 @@ nav a:hover{
   justify-content: center;
 }
 
+#pageselect {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.artcollection_page_link {
+  margin: 8px;
+}
+
 .artcollection_image_container {
   padding: 20px;
   display: flex;
@@ -486,6 +497,7 @@ nav.width_container {
 
 #art-page {
   padding: 40px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;

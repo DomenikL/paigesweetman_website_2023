@@ -48,6 +48,9 @@
       <div class="container" id="designs_main_page">
         <div class="width_container" id="artcontainer"></div>
       </div>
+      <div class="container">
+        <div class="width_container" id="pageselect"></div>
+      </div>
     </div>
     <div class="container" id="footer">
       <div class="width_container">
@@ -57,15 +60,47 @@
   </body>
   <script>
     const artcontainer = document.getElementById("artcontainer");
-    fetch("api/artpieces", { method: "GET" })
-      .then((response) => response.json())
-      .then((data) => {
-        data.forEach((artpiece) => {
+    const pageselect = document.getElementById("pageselect");
+    const pageSize = 6
+    const artpieces = [];
+    const renderartpieces = (index) => {
+      artcontainer.innerHTML = '';
+      const visibleartpieces = artpieces.slice(index, index+pageSize)
+      visibleartpieces.forEach((artpiece) => {
           const artpieceDiv = document.createElement("div");
           artpieceDiv.classList.add("artcollection_image_container");
           artpieceDiv.innerHTML = `<a href="art.html?id=${artpiece.id}"><img src="images/${artpiece.filename}" alt="${artpiece.description}"></a>`;
           artcontainer.appendChild(artpieceDiv);
         });
+    };
+    const renderpageselect = (index) => {
+      pageselect.innerHTML = '';
+      const totalPages = Math.ceil(artpieces.length / pageSize);
+      for (let i = 0; i < totalPages; i++) {
+        if (i == index) {
+          const pageselecttext = document.createElement("p")
+          pageselecttext.classList.add("artcollection_page_link");
+          pageselecttext.innerHTML = i + 1;
+          pageselect.appendChild(pageselecttext);
+        } else {
+          const pageselectlink = document.createElement("a");
+          pageselectlink.href = '#';
+          pageselectlink.classList.add("artcollection_page_link");
+          pageselectlink.innerHTML = i+1;
+          pageselectlink.onclick = () => {
+            renderartpieces(i * pageSize);
+            renderpageselect(i);
+          }
+          pageselect.appendChild(pageselectlink);
+        }
+      }
+    }; 
+    fetch("api/artpieces", { method: "GET" })
+      .then((response) => response.json())
+      .then((data) => {
+        artpieces.push(...data);
+        renderartpieces(0);
+        renderpageselect(0);
       })
       .catch((errorMsg) => {
         console.log(errorMsg);
