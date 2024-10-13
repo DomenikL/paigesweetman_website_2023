@@ -7,7 +7,7 @@ app.use(express.static("public"));
 
 app.get("/api/artpieces", async (req, res) => {
   const response = await db.query(
-    "select id, description, filename from artpieces"
+    "select id, description, filename from artpieces order by id desc"
   );
   res.json(response);
 });
