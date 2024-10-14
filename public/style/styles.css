@@ -406,6 +406,8 @@ nav a:hover{
 }
 
 .artcollection_page_link {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.2rem;
   margin: 8px;
 }
 
@@ -415,6 +417,10 @@ nav a:hover{
   width: 50%;
   align-items: center;
   justify-content: center;
+}
+
+.artcollection_image_container a {
+  text-align: center;
 }
 
 .artcollection_image_container img {
@@ -466,9 +472,6 @@ nav a:hover{
     width: 50%;
     margin: auto;
   }
-  .artcollection_image_container {
-    width: 100%;
-  }
 
   #designs_top .width_container {
     flex-direction: column;
@@ -507,4 +510,14 @@ nav.width_container {
   width: 100%;
   max-width: 800px;
   margin-bottom: 20px;
+}
+
+.heart-image {
+  width: 40px;
+}
+
+#likescountcontainer {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.2rem;
+  padding: 5px;
 }

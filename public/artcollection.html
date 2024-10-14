@@ -28,12 +28,12 @@
           <div id="designs_text">
             <h2>Art Collection</h2>
             <p>
-              As part of my school design project in which I tasked myself to
-              design the world and characters for the fictional game 'Spectre
-              Protocol' I also designed some game covers to go with them. These
-              covers went through several iterations until I finally landed on
-              my final design (voted on by my peers) which I then polished
-              further and finished.
+              As part of my school design projects in which I tasked myself to
+              design the world and characters for some custome fictional games,
+              I also designed some game covers to go with them. These covers
+              went through several iterations until I finally landed on my final
+              design (voted on by my peers) which I then polished further and
+              finished.
             </p>
           </div>
           <div id="designs_favourites">
@@ -61,40 +61,40 @@
   <script>
     const artcontainer = document.getElementById("artcontainer");
     const pageselect = document.getElementById("pageselect");
-    const pageSize = 6
+    const pageSize = 6;
     const artpieces = [];
     const renderartpieces = (index) => {
-      artcontainer.innerHTML = '';
-      const visibleartpieces = artpieces.slice(index, index+pageSize)
+      artcontainer.innerHTML = "";
+      const visibleartpieces = artpieces.slice(index, index + pageSize);
       visibleartpieces.forEach((artpiece) => {
-          const artpieceDiv = document.createElement("div");
-          artpieceDiv.classList.add("artcollection_image_container");
-          artpieceDiv.innerHTML = `<a href="art.html?id=${artpiece.id}"><img src="images/${artpiece.filename}" alt="${artpiece.description}"></a>`;
-          artcontainer.appendChild(artpieceDiv);
-        });
+        const artpieceDiv = document.createElement("div");
+        artpieceDiv.classList.add("artcollection_image_container");
+        artpieceDiv.innerHTML = `<a href="art.html?id=${artpiece.id}"><img src="images/${artpiece.filename}" alt="${artpiece.description}"></a>`;
+        artcontainer.appendChild(artpieceDiv);
+      });
     };
     const renderpageselect = (index) => {
-      pageselect.innerHTML = '';
+      pageselect.innerHTML = "";
       const totalPages = Math.ceil(artpieces.length / pageSize);
       for (let i = 0; i < totalPages; i++) {
         if (i == index) {
-          const pageselecttext = document.createElement("p")
+          const pageselecttext = document.createElement("p");
           pageselecttext.classList.add("artcollection_page_link");
           pageselecttext.innerHTML = i + 1;
           pageselect.appendChild(pageselecttext);
         } else {
           const pageselectlink = document.createElement("a");
-          pageselectlink.href = '#';
+          pageselectlink.href = "#";
           pageselectlink.classList.add("artcollection_page_link");
-          pageselectlink.innerHTML = i+1;
+          pageselectlink.innerHTML = i + 1;
           pageselectlink.onclick = () => {
             renderartpieces(i * pageSize);
             renderpageselect(i);
-          }
+          };
           pageselect.appendChild(pageselectlink);
         }
       }
-    }; 
+    };
     fetch("api/artpieces", { method: "GET" })
       .then((response) => response.json())
       .then((data) => {

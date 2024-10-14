@@ -54,6 +54,10 @@
           <a href="artcollection.html" class="back-button">&larr;</a>
         </div>
         <div class="width_container" id="artpiececontainer"></div>
+        <div class="width_container" id="likescontainer">
+          <div id="heartcontainer"></div>
+          <div id="likescountcontainer"></div>
+        </div>
       </div>
     </div>
 
@@ -64,10 +68,8 @@
     </div>
 
     <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      const idParam = urlParams.get("id");
-      if (idParam) {
-        fetch(`api/artpiece?id=${idParam}`, { method: "GET" })
+      const loadArtpiece = (id) => {
+        fetch(`api/artpiece?id=${id}`, { method: "GET" })
           .then((respons) => respons.json())
           .then((artpiece) => {
             const artpicecontainer =
@@ -79,8 +81,67 @@
           })
           .catch((errorMsg) => {
             console.log(errorMsg);
-            alert("Faild to fetch art");
+            alert("Failed to fetch art");
           });
+      };
+      const addLike = (id) => {
+        fetch(`api/likes?id=${id}`, { method: "PUT" })
+          .then(() => {
+            loadLikes(id);
+          })
+          .catch((errorMsg) => {
+            console.log(errorMsg);
+            alert("Failed to add like");
+          });
+      };
+      const deleteLike = (id) => {
+        fetch(`api/likes?id=${id}`, { method: "DELETE" })
+          .then(() => {
+            loadLikes(id);
+          })
+          .catch((errorMsg) => {
+            console.log(errorMsg);
+            alert("Failed to delete like");
+          });
+      };
+      const loadLikes = (id) => {
+        fetch(`api/likes?id=${id}`, { method: "GET" })
+          .then((respons) => respons.json())
+          .then((responsbody) => {
+            const likescountcontainer = document.getElementById(
+              "likescountcontainer"
+            );
+            likescountcontainer.innerHTML = responsbody.like_count;
+            const heartcontainer = document.getElementById("heartcontainer");
+            heartcontainer.innerHTML = "";
+            if (responsbody.user_like == 0) {
+              const heartelement = document.createElement("img");
+              heartelement.classList.add("heart-image");
+              heartelement.src = `images/heart_empty.png`;
+              heartelement.onclick = () => {
+                addLike(id);
+              };
+              heartcontainer.appendChild(heartelement);
+            } else {
+              const heartelement = document.createElement("img");
+              heartelement.classList.add("heart-image");
+              heartelement.src = `images/heart_full.png`;
+              heartelement.onclick = () => {
+                deleteLike(id);
+              };
+              heartcontainer.appendChild(heartelement);
+            }
+          })
+          .catch((errorMsg) => {
+            console.log(errorMsg);
+            alert("Failed to fetch likes");
+          });
+      };
+      const urlParams = new URLSearchParams(window.location.search);
+      const idParam = urlParams.get("id");
+      if (idParam) {
+        loadArtpiece(idParam);
+        loadLikes(idParam);
       }
     </script>
   </body>
